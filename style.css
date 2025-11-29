@@ -252,3 +252,221 @@ body {
 .btn-container:hover .border-layer::before {
     transform: translate(-50%, -50%) rotate(-110deg);
 }
+
+body {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+.hero-bg {
+    background-color: #0a0a0a;
+    background-image: 
+        linear-gradient(to right, #1a1a1a 1px, transparent 1px),
+        linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center center;
+}
+
+.contact-card {
+    width: 100%;
+    max-width: 450px;
+    background: #171717;
+    transition: 1s ease-in-out;
+    clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #2a2a2a;
+    padding: 2em;
+}
+
+.contact-card:hover {
+    border-color: #A9FB05;
+    transform: translateY(-5px);
+}
+
+.contact-card h2 {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.contact-card .info {
+    font-weight: 400;
+    color: #a0a0a0;
+    text-align: center;
+    font-size: 0.9em;
+    margin-bottom: 2em;
+}
+
+.contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.contact-option {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    background: #1f1f1f;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+    transition: all 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.contact-option:hover {
+    border-color: #A9FB05;
+    background: #252525;
+    transform: translateX(5px);
+}
+
+.contact-option .icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: linear-gradient(135deg, #A9FB05, #7FB804);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-option .icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.contact-option .text {
+    flex: 1;
+}
+
+.contact-option .text h3 {
+    font-weight: 600;
+    font-size: 1em;
+    margin-bottom: 0.2em;
+}
+
+.contact-option .text p {
+    font-size: 0.75em;
+    color: #a0a0a0;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    background: linear-gradient(#171717, #171717) padding-box,
+                linear-gradient(145deg, transparent 35%, #A9FB05, #7FB804) border-box;
+    border: 2px solid transparent;
+    padding: 32px 24px;
+    font-size: 14px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background-size: 200% 100%;
+    animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.form-container button:active {
+    scale: 0.95;
+}
+
+.form-container .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-container .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.form-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #a0a0a0;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.form-container .form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #414141;
+}
+
+.form-container .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    resize: none;
+    color: #fff;
+    height: 96px;
+    border: 1px solid #414141;
+    background-color: transparent;
+}
+
+.form-container .form-group input::placeholder,
+.form-container .form-group textarea::placeholder {
+    opacity: 0.5;
+}
+
+.form-container .form-group input:focus,
+.form-container .form-group textarea:focus {
+    outline: none;
+    border-color: #A9FB05;
+}
+
+.form-container .form-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    color: #000;
+    font-weight: 600;
+    width: 40%;
+    background: #A9FB05;
+    border: 1px solid #A9FB05;
+    padding: 12px 16px;
+    font-size: inherit;
+    gap: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.form-container .form-submit-btn:hover {
+    background-color: #C5FC4A;
+    border-color: #C5FC4A;
+    transform: translateY(-2px);
+}
+
