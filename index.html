@@ -13,7 +13,7 @@
     <section class="hero-bg w-full text-sm pb-44">
 
         <!-- MAIN NAVBAR -->
-        <nav class="flex items-center justify-between p-4 md:px-16 lg:px-24 xl:px-32 md:py-6 w-full">
+        <nav class="main-nav flex items-center justify-between p-4 md:px-16 lg:px-24 xl:px-32 md:py-6 w-full">
             <a href="index.html">
                 <img src="assets/images/Inkbyte%20logo.png" alt="InkByte" class="h-10 md:h-12">
             </a>
@@ -24,7 +24,7 @@
 
         <!-- PRODUCT HUNT BADGE -->
         <a href="https://www.producthunt.com" target="_blank" rel="noopener noreferrer"
-           class="flex items-center gap-2 border border-zinc-700 hover:border-[#A9FB05] bg-zinc-900/50 rounded-full w-max mx-auto px-4 py-2 mt-40 md:mt-32 cursor-pointer transition-all">
+           class="hero-enter delay-1 flex items-center gap-2 border border-zinc-700 hover:border-[#A9FB05] bg-zinc-900/50 rounded-full w-max mx-auto px-4 py-2 mt-40 md:mt-32 cursor-pointer transition-all">
             <span class="text-gray-300">Launched at Product Hunt</span>
             <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
                 <path d="M3.959 9.5h11.083m0 0L9.501 3.958M15.042 9.5l-5.541 5.54"
@@ -33,7 +33,7 @@
         </a>
 
         <!-- HERO HEADING -->
-        <div class="max-w-[950px] text-center mx-auto mt-8 px-4">
+        <div class="hero-enter delay-2 max-w-[950px] text-center mx-auto mt-8 px-4">
             <h5 class="text-4xl md:text-7xl font-medium text-white">
                 Learning that makes you
             </h5>
@@ -50,7 +50,7 @@
         </div>
 
         <!-- DOWNLOAD + LEARN MORE BUTTONS -->
-        <div class="mx-auto w-full flex items-center justify-center gap-3 mt-8 px-4 flex-wrap">
+        <div class="hero-enter delay-3 mx-auto w-full flex items-center justify-center gap-3 mt-8 px-4 flex-wrap">
             <div class="btn-container">
                 <div class="glow-layer"></div>
                 <div class="darkBorderBg"></div>
@@ -80,6 +80,106 @@
 
     </section>
 
+    <!-- ============================================================
+         APP UI SHOWCASE
+         Shows what the app actually looks like, right under the hero.
+         Swap the <img> below for a real screenshot of the app (a
+         portrait phone screenshot works best) — the frame, glow and
+         notch around it are plain CSS and don't need any changes.
+         ============================================================ -->
+    <section class="app-showcase">
+        <div class="phone-mockup">
+            <div class="phone-notch"></div>
+            <img src="assets/images/inkbytehome.png" alt="InkByte app screen showing generated notes and flashcards">
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FEATURES SECTION
+         To add or change a feature, copy one <article class="feature-card">
+         block and edit only three things inside it:
+           1. <img src="..."> and its alt text  -> your feature's image
+           2. the <h3>                          -> feature name
+           3. the <p>                           -> what it does
+         Cards fade/rise into place the first time they scroll into
+         view, and lift with a green glow on hover — no other setup
+         needed, the effect is driven by the .feature-card CSS + the
+         small script at the bottom of this file.
+         ============================================================ -->
+    <section class="features-section">
+        <div class="features-header">
+            <h2>One video in. A full study kit out.</h2>
+            <p>Drop in a link and InkByte turns hours of video into the material you'd normally spend hours making yourself.</p>
+        </div>
+
+        <div class="feature-grid">
+
+            <!-- Feature 1 -->
+            <article class="feature-card">
+                <div class="feature-media">
+                    <img src="assets/images/Inkbyte7017.png" alt="Structured notes generated from a video">
+                </div>
+                <div class="feature-body">
+                    <h3>Notes, already organized</h3>
+                    <p>Long lectures and tutorials become clean notes sorted by topic, so you're not pausing every ten seconds to write things down.</p>
+                </div>
+            </article>
+
+            <!-- Feature 2 -->
+            <article class="feature-card">
+                <div class="feature-media">
+                    <img src="assets/images/Inkbyte7018.png" alt="Flashcards generated from a video">
+                </div>
+                <div class="feature-body">
+                    <h3>Got a Doubt? Let’s Crack It!</h3>
+                    <p>Ask anything, get instant feedback, fix your mistakes, and make sure you don’t repeat them in the exam. Learn smarter, not harder!</p>
+                </div>
+            </article>
+
+            <!-- Feature 3 -->
+            <article class="feature-card">
+                <div class="feature-media">
+                    <img src="assets/images/Inkbyte7019.png" alt="Quiz screen checking a written answer">
+                </div>
+                <div class="feature-body">
+                    <h3>Last-Minute Revision? Flashcards to the Rescue!</h3>
+                    <p>Got an exam tomorrow? No panic! Flip through quick, focused flashcards, refresh the important stuff, and walk into the exam like you actually studied</p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
     <script src="script.js"></script>
+
+    <!-- UI enhancements added on top of script.js: nav scroll state
+         + one-time reveal animation for the feature cards and the
+         app screenshot. Safe to merge into script.js later — kept
+         separate here so your existing file isn't touched. -->
+    <script>
+        (function () {
+            var nav = document.querySelector('.main-nav');
+            if (nav) {
+                window.addEventListener('scroll', function () {
+                    nav.classList.toggle('scrolled', window.scrollY > 12);
+                }, { passive: true });
+            }
+
+            var cards = document.querySelectorAll('.feature-card, .phone-mockup');
+            if ('IntersectionObserver' in window && cards.length) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+                cards.forEach(function (card) { observer.observe(card); });
+            } else {
+                cards.forEach(function (card) { card.classList.add('is-visible'); });
+            }
+        })();
+    </script>
 </body>
 </html>
